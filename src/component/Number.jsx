@@ -2,22 +2,29 @@ import React, { useState } from 'react'
 import ReactPlayer from 'react-player';
 
 function Number() {
-    const [playVideo, setPlayVideo] = useState(false);
+    const [playVideo, setPlayVideo] = useState({
+        url: 'https://vt.tumblr.com/tumblr_o600t8hzf51qcbnq0_480.mp4',
+        videoState: false
+    });
 
     const onPlay = () => {
-        setPlayVideo(true)
+        setPlayVideo({
+            videoState: true,
+        })
     }
 
     const pausePlay = () => {
-        setPlayVideo(false)
+        setPlayVideo({
+            videoState: false
+        })
     }
 
 
     return (
         <>
             <ReactPlayer
-                url= 'https://vt.tumblr.com/tumblr_o600t8hzf51qcbnq0_480.mp4'
-                playing={playVideo}
+                url={playVideo.url}
+                playing={playVideo.videoState}
             />
             <button onClick={onPlay} >Play</button>
             <button onClick={pausePlay} >Pause</button>
